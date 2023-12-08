@@ -8,9 +8,24 @@ variable "s3_key" {
   type        = string
 }
 
-variable "vpc_id" {
-  description = "VPC ID where API Gateway is restricted to"
+variable "function_name" {
   type        = string
+  description = "Name of the lambda function"
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "VPC ID to place lambda in"
+}
+
+variable "subnet_ids" {
+  type        = list(string)
+  description = "Subnets to place lambda in"
+}
+
+variable "sns_topic_name" {
+  type        = string
+  description = "Name of the sns topic"
 }
 
 variable "webhook_url" {
@@ -31,5 +46,9 @@ variable "notification_begin" {
 variable "notification_end" {
   description = "Time end when notifications on Slack should be sent out"
   type        = string
+}
+
+variable "tags" {
+  default = {}
 }
 

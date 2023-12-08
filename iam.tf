@@ -17,10 +17,9 @@ data "aws_iam_policy_document" "notify-teams-policy" {
     ]
 
     resources = concat(
-      var.s3_target_buckets,
       [
-        "${var.s3_lambda_bucket}/*",
-        var.s3_lambda_bucket,
+        "${var.s3_bucket}/*",
+        var.s3_bucket,
       ]
     )
 
@@ -36,7 +35,6 @@ data "aws_iam_policy_document" "notify-teams-policy" {
       "logs:PutLogEvents"
     ]
   }
-
 }
 
 resource "aws_iam_policy" "notify-teams-policy" {
