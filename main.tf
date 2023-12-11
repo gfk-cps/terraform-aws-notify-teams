@@ -30,6 +30,7 @@ module "lambda" {
   memory_size                       = 512
   timeout                           = 60
   cloudwatch_logs_retention_in_days = 60
+  source_code_hash                  = filebase64sha256(local.zipfile)
   package_type                      = "Zip"
 
   lambda_environment = {
