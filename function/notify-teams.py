@@ -15,7 +15,8 @@ def is_time_between(begin_time, end_time, check_time=None):
 
 def lambda_handler(event, context):
 
-    message = json.loads(json.dumps(event))["Records"][0]["Sns"]["Message"]
+    message = json.loads(event["Records"][0]["Sns"]["Message"])
+
     alarm_name = message['AlarmName']
     alarm_desc = message['AlarmDescription']
     new_state = message['NewStateValue']
