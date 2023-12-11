@@ -1,10 +1,9 @@
 #!/usr/bin/env python3.9
 
-import time
 import json   
 from urllib.request import urlopen, Request
 import os
-from datetime import datetime
+from datetime import datetime, time
 
 def is_time_between(begin_time, end_time, check_time=None):
     # If check time is not given, default to current UTC time
@@ -17,11 +16,11 @@ def is_time_between(begin_time, end_time, check_time=None):
 def lambda_handler(event, context):
 
     message = event
-    alarm_name = json.loads(message)['AlarmName']
-    alarm_desc = json.loads(message)['AlarmDescription']
-    new_state = json.loads(message)['NewStateValue']
-    alarm_time = json.loads(message)['StateChangeTime']
-    region = json.loads(message)['Region']
+    alarm_name = message['AlarmName']
+    alarm_desc = message['AlarmDescription']
+    new_state = message['NewStateValue']
+    alarm_time = message['StateChangeTime']
+    region = message['Region']
     account_id = context.invoked_function_arn.split(':')[4]
     
     # Create url link to view alarm
