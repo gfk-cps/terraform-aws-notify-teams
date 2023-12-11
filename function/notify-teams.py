@@ -2,7 +2,7 @@
 
 import time
 import json   
-import requests
+from urllib.request import urlopen, Request
 import os
 from datetime import datetime
 
@@ -71,4 +71,10 @@ def lambda_handler(event, context):
 
     # check if current time is in service time window
     if is_time_between(time(start_hour,start_minute), time(end_hour,end_minute)):
-      response = requests.post(webhook_url, json=message_card, headers=headers)
+      httprequest = Request(webhook_url, data=json.dumps(message_card).encode(), method="POST", headers=headers)
+      with urlopen(httprequest) as response:
+        r = { 
+           'statusCode': 200,
+           'body': json.dumps(response.read().decode()),
+        }
+        return r
