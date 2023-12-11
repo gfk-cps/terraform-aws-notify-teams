@@ -41,11 +41,13 @@ variable "environment" {
 variable "notification_begin" {
   description = "Time start when notifications on Slack should be sent out"
   type        = string
+  default     = "00:01"
 }
 
 variable "notification_end" {
   description = "Time end when notifications on Slack should be sent out"
   type        = string
+  default     = "23:59"
 }
 
 variable "tags" {
