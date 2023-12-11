@@ -1,4 +1,4 @@
-variable "s3_bucket" {
+variable "s3_bucket_arn" {
   description = "Where lambda zip is stored"
   type        = string
 }

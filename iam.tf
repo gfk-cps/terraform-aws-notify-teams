@@ -18,8 +18,8 @@ data "aws_iam_policy_document" "notify-teams-policy" {
 
     resources = concat(
       [
-        "${var.s3_bucket}/*",
-        var.s3_bucket,
+        "${var.s3_bucket_arn}/*",
+        var.s3_bucket_arn,
       ]
     )
 

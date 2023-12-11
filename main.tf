@@ -4,7 +4,7 @@ locals {
 
 # s3 bucket
 resource "aws_s3_object" "object" {
-  bucket = var.s3_bucket
+  bucket = split(":", var.s3_bucket_arn)[5]
   key    = var.s3_key
   source = data.archive_file.source.output_path
   etag   = filemd5(data.archive_file.source.output_path)
@@ -26,7 +26,7 @@ module "lambda" {
   runtime                           = "python3.9"
   handler                           = "notify-teams.lambda_handler"
   s3_key                            = aws_s3_object.object.key
-  s3_bucket                         = var.s3_bucket
+  s3_bucket                         = split(":", var.s3_bucket_arn)[5]
   memory_size                       = 512
   timeout                           = 60
   cloudwatch_logs_retention_in_days = 60
