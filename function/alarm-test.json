@@ -1,0 +1,47 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:eu-west-1:000000000000:cloudwatch-alarms:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "TopicArn": "arn:aws:sns:eu-west-1:000000000000:cloudwatch-alarms",
+        "Subject": "ALARM: \"Example alarm name\" in EU - Ireland",
+        "Message": "{\"AlarmName\":\"Example alarm name\",\"AlarmDescription\":\"Example alarm description.\",\"AWSAccountId\":\"000000000000\",\"NewStateValue\":\"ALARM\",\"NewStateReason\":\"Threshold Crossed: 1 datapoint (10.0) was greater than or equal to the threshold (1.0).\",\"StateChangeTime\":\"2017-01-12T16:30:42.236+0000\",\"Region\":\"EU - Ireland\",\"OldStateValue\":\"OK\",\"Trigger\":{\"MetricName\":\"DeliveryErrors\",\"Namespace\":\"ExampleNamespace\",\"Statistic\":\"SUM\",\"Unit\":null,\"Dimensions\":[],\"Period\":300,\"EvaluationPeriods\":1,\"ComparisonOperator\":\"GreaterThanOrEqualToThreshold\",\"Threshold\":1.0}}",
+        "Timestamp": "2017-01-12T16:30:42.318Z",
+        "SignatureVersion": "1",
+        "Signature": "Cg==",
+        "SigningCertUrl": "https://sns.eu-west-1.amazonaws.com/SimpleNotificationService-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.pem",
+        "UnsubscribeUrl": "https://sns.eu-west-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:eu-west-1:000000000000:cloudwatch-alarms:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "MessageAttributes": {}
+      }
+    }
+  ]
+}
+
+{
+  "AlarmName": "ALARM_NAME",
+  "AlarmDescription": "ALARM_DESCRIPTION",
+  "AWSAccountId": "ACCOUNT_ID",
+  "NewStateValue": "OK",
+  "NewStateReason": "REASON",
+  "StateChangeTime": "TIMESTAMP",
+  "Region": "REGION",
+  "OldStateValue": "OK",
+  "Trigger": {
+    "MetricName": "METRIC_NAME",
+    "Namespace": "AWS/SNS",
+    "StatisticType": "SampleCount",
+    "Statistic": "AVERAGE",
+    "Unit": null,
+    "Dimensions": [],
+    "Period": 60,
+    "EvaluationPeriods": 1,
+    "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+    "Threshold": 1.0,
+    "TreatMissingData": "- TreatMissingData: -",
+    "EvaluateLowSampleCountPercentile": ""
+  }
+}
