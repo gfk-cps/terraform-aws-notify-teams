@@ -46,7 +46,7 @@ module "lambda" {
   custom_iam_policy_arns = [
     # direct lookup is not possible due to for_each evaluation
     # would be aws_iam_policy.notify-teams-policy.arn normally
-    "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/${var.environment}-notify-teams-policy",
+    "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/${module.this.environment}-${module.this.name}-policy",
   ]
 
   vpc_config = {
