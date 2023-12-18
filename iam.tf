@@ -38,7 +38,7 @@ data "aws_iam_policy_document" "notify-teams-policy" {
 }
 
 resource "aws_iam_policy" "notify-teams-policy" {
-  name        = "${var.environment}-notify-teams-policy"
+  name        = "${module.this.environment}-${module.this.name}-policy"
   path        = "/"
   description = "IAM policy for logging from a lambda"
   policy      = data.aws_iam_policy_document.notify-teams-policy.json

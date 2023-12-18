@@ -33,11 +33,6 @@ variable "webhook_url" {
   description = "Webhook Url from teams chat"
 }
 
-variable "environment" {
-  description = "Environment name"
-  type        = string
-}
-
 variable "notification_begin" {
   description = "Time start when notifications on Slack should be sent out"
   type        = string
@@ -49,8 +44,3 @@ variable "notification_end" {
   type        = string
   default     = "23:59"
 }
-
-variable "tags" {
-  default = {}
-}
-

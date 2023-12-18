@@ -1,5 +1,5 @@
 locals {
-  zipfile = "/tmp/notify-teams-${var.environment}.zip"
+  zipfile = "/tmp/notify-teams-${module.this.environment}.zip"
 }
 
 # s3 bucket
@@ -21,6 +21,7 @@ module "lambda" {
   source  = "cloudposse/lambda-function/aws"
   version = "0.5.3"
 
+  context                           = module.this.context
   description                       = "notify-teams Lambda"
   function_name                     = var.function_name
   runtime                           = "python3.9"
@@ -54,7 +55,7 @@ module "lambda" {
   }
 
   tags = merge(
-    var.tags,
+    module.this.tags,
     { Name = "${var.environment}-notify-teams" }
   )
 
@@ -68,6 +69,7 @@ module "sg" {
   source  = "cloudposse/security-group/aws"
   version = "2.0.0"
 
+  context          = module.this.context
   attributes       = ["lambdas"]
   allow_all_egress = true
   vpc_id           = var.vpc_id
@@ -91,7 +93,7 @@ module "sg" {
 # sns 
 resource "aws_sns_topic" "this" {
   name = var.sns_topic_name
-  tags = var.tags
+  tags = module.this.tags
 }
 
 resource "aws_sns_topic_subscription" "sns_notify_teams" {
